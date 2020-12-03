@@ -12,4 +12,4 @@ const ScoreSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.Pet || mongoose.model('Score', ScoreSchema);
+export default mongoose.models.Score || mongoose.model('Score', ScoreSchema);
