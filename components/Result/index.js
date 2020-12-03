@@ -9,13 +9,29 @@ const Result = ({ score, setGameState }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleScoreSubmit = async () => {
-    setIsLoading(true);
+    try {
+      setIsLoading(true);
 
-    // API Call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+      // API Call
+      await fetch('/api/scores', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: nameValue,
+          points: score,
+        }),
+      });
 
-    setIsLoading(false);
-    router.push('/scores');
+      setIsLoading(false);
+      setNameValue('');
+      router.push('/scores');
+    } catch (e) {
+      setIsLoading(false);
+      console.error(e);
+    }
   };
 
   return (
