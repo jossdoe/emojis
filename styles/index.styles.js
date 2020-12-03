@@ -23,6 +23,17 @@ export const PlayButton = styled.button`
     font-weight: bold;
     font-size: 1.4rem;
     color: ${theme.backgroundWhite};
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.1s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 1;
+    }
   `}
 `;
 
@@ -39,5 +50,16 @@ export const ScoreButton = styled.button`
     font-weight: bold;
     font-size: 1.4rem;
     color: ${theme.color};
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.1s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 1;
+    }
   `}
 `;
