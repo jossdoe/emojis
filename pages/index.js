@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import useCountdown from 'hooks/useCountdown';
 import Countdown from 'components/Countdown';
+import Gameloop from 'components/Gameloop';
 import { Instructions, PlayButton, ScoreButton } from 'styles/index.styles';
 
 const IndexPage = () => {
@@ -36,16 +37,13 @@ const IndexPage = () => {
 
   if (gameState === 'gameloop')
     return (
-      <>
-        <div>Time left: {gameCountdown}</div>
-        <div>Score: {gameScore}</div>
-        <div>{currentEmoji}</div>
-        <input
-          type="text"
-          value={emojiField}
-          onChange={(e) => setEmojiField(e.currentTarget.value)}
-        />
-      </>
+      <Gameloop
+        countdown={gameCountdown}
+        score={gameScore}
+        currentEmoji={currentEmoji}
+        emojiField={emojiField}
+        setEmojiField={setEmojiField}
+      />
     );
 
   if (gameState === 'result')
