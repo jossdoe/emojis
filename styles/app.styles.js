@@ -6,6 +6,7 @@ export const Header = styled.header`
     color: ${theme.color};
     text-align: center;
     margin: 40px auto;
+    font-weight: bold;
 
     &::before {
       content: '😜';
