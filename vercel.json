@@ -1,10 +1,10 @@
 {
   "env": {
-    "MONGODB_URI": "@next_example_mongodb_uri"
+    "MONGODB_URI": "@MONGODB_URI"
   },
   "build": {
     "env": {
-      "MONGODB_URI": "@next_example_mongodb_uri"
+      "MONGODB_URI": "@MONGODB_URI"
     }
   }
 }
