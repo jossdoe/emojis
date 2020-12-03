@@ -81,7 +81,9 @@ const IndexPage = () => {
         possible.
       </Instructions>
       <PlayButton onClick={() => setGameState('countdown')}>Play</PlayButton>
-      <ScoreButton>Highscores</ScoreButton>
+      <ScoreButton onClick={() => router.push('/scores')}>
+        Highscores
+      </ScoreButton>
     </>
   );
 };
