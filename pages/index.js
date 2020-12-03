@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import useCountdown from 'hooks/useCountdown';
+import Countdown from 'components/Countdown';
 import { Instructions, PlayButton, ScoreButton } from 'styles/index.styles';
 
 const IndexPage = () => {
@@ -31,12 +32,7 @@ const IndexPage = () => {
     router.push('/scores');
   };
 
-  if (gameState === 'countdown')
-    return (
-      <>
-        <div>{preCountdown}</div>
-      </>
-    );
+  if (gameState === 'countdown') return <Countdown count={preCountdown} />;
 
   if (gameState === 'gameloop')
     return (
