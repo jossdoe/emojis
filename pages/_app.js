@@ -1,36 +1,66 @@
-import '../css/style.css'
-import '../css/form.css'
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import { createGlobalStyle, ThemeProvider, css } from 'styled-components';
+
+import { Header, Container } from 'styles/app.styles';
+
+const theme = {
+  purple: '#8d92ff',
+  pink: '#ff98c7',
+  blue: '#86cfff',
+  orange: '#ffc78a',
+  backgroundDark: '#F5F6FB',
+  backgroundLight: '#F2F3F8',
+  backgroundWhite: '#FFFFFF',
+  color: '#8B95AA',
+};
+
+const GlobalStyle = createGlobalStyle`
+${({ theme }) => css`
+  * {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  body {
+    margin: 0;
+    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+    background: ${theme.backgroundDark};
+    background: linear-gradient(
+      15deg,
+      ${theme.backgroundDark} 0%,
+      ${theme.backgroundLight} 100%
+    );
+    color: ${theme.color};
+    font-size: 1.2rem;
+  }
+`}
+`;
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <title>Pet Care App</title>
-      </Head>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Head>
+          <title>Emoji Game</title>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
 
-      <div className="top-bar">
-        <div className="nav">
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/new">
-            <a>Add Pet</a>
-          </Link>
-        </div>
+        <Header>Emoji Game</Header>
 
-        <img
-          id="title"
-          src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Pet_logo_with_flowers.png"
-          alt="pet care logo"
-        ></img>
-      </div>
-      <div className="grid wrapper">
-        <Component {...pageProps} />
-      </div>
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
