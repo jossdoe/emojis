@@ -17,6 +17,7 @@ const Gameloop = ({
       type="text"
       value={emojiField}
       onChange={(e) => setEmojiField(e.currentTarget.value)}
+      ref={(input) => input && input.focus()}
     />
   </>
 );
