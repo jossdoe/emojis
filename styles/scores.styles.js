@@ -9,6 +9,7 @@ export const ScoreList = styled.ul`
   padding: 0;
   list-style: none;
   font-size: 1rem;
+  width: 100%;
 
   & > * + * {
     margin-top: 10px;
