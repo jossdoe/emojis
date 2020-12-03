@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Score } from './styles';
+import getRandomEmoji from 'utils/getRandomEmoji';
+
+import {
+  Title,
+  Score,
+  Label,
+  Input,
+  Spinner,
+  SubmitButton,
+  ReplayButton,
+} from './styles';
 
 const Result = ({ score, setGameState }) => {
   const router = useRouter();
@@ -36,22 +46,24 @@ const Result = ({ score, setGameState }) => {
 
   return (
     <>
-      <div>Time's up!</div>
-      <Score>Your score: {score}</Score>
-      <div>
-        <label>Your Name</label>
-        <input
-          type="text"
-          value={nameValue}
-          onChange={(e) => setNameValue(e.currentTarget.value)}
-        />
-      </div>
+      <Title>Time's up!</Title>
+      <Score>
+        Your score: <strong>{score} Points</strong>
+      </Score>
+      <Input
+        type="text"
+        value={nameValue}
+        onChange={(e) => setNameValue(e.currentTarget.value)}
+        placeholder="Enter Name"
+      />
       {isLoading ? (
-        'Loading...'
+        <Spinner>{getRandomEmoji()}</Spinner>
       ) : (
-        <button onClick={handleScoreSubmit}>Add to scoreboard</button>
+        <SubmitButton onClick={handleScoreSubmit}>Add Score</SubmitButton>
       )}
-      <button onClick={() => setGameState('countdown')}>Try again</button>
+      <ReplayButton onClick={() => setGameState('countdown')}>
+        Try Again
+      </ReplayButton>
     </>
   );
 };

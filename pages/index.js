@@ -13,7 +13,7 @@ const IndexPage = () => {
   const router = useRouter();
 
   // General game states
-  const [gameState, setGameState] = useState('index');
+  const [gameState, setGameState] = useState('result');
   const [gameScore, setGameScore] = useState(0);
 
   // Countdown states
