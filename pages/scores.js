@@ -3,17 +3,32 @@ import { useRouter } from 'next/router';
 import dbConnect from '../utils/dbConnect';
 import Score from '../models/Score';
 
+import {
+  Title,
+  ScoreList,
+  ScoreItem,
+  Place,
+  Name,
+  Points,
+  HomeButton,
+} from 'styles/scores.styles';
+
 const ScoresPage = ({ scores }) => {
   const router = useRouter();
 
   return (
     <>
-      <ul>
-        {scores.map((score) => (
-          <li key={score._id}>{`${score.name}: ${score.points}`}</li>
+      <Title>Highscores</Title>
+      <ScoreList>
+        {scores.slice(0, 10).map((score, idx) => (
+          <ScoreItem key={score._id}>
+            <Place>{idx + 1}</Place>
+            <Name>{score.name}</Name>
+            <Points>{score.points} Points</Points>
+          </ScoreItem>
         ))}
-      </ul>
-      <button onClick={() => router.push('/')}>Go Home</button>
+      </ScoreList>
+      <HomeButton onClick={() => router.push('/')}>Go Home</HomeButton>
     </>
   );
 };
