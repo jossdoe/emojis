@@ -29,7 +29,7 @@ export const Container = styled.main`
     max-width: 400px;
     min-height: 400px;
     background-color: ${theme.backgroundWhite};
-    margin: 0 auto;
+    margin: 0 auto 20px;
     padding: 40px;
     border-radius: 30px;
     box-shadow: 1px 2px 3px ${theme.color}11, 1px 2px 9px ${theme.color}11;
