@@ -33,5 +33,9 @@ export const Container = styled.main`
     border-radius: 30px;
     box-shadow: 1px 2px 3px ${theme.color}11, 1px 2px 9px ${theme.color}11;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   `}
 `;
