@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import useCountdown from 'hooks/useCountdown';
 import Countdown from 'components/Countdown';
 import Gameloop from 'components/Gameloop';
+import Result from 'components/Result';
 import { Instructions, PlayButton, ScoreButton } from 'styles/index.styles';
 
 const IndexPage = () => {
@@ -20,18 +21,6 @@ const IndexPage = () => {
   const [gameScore, setGameScore] = useState(0);
   const [currentEmoji, setCurrentEmoji] = useState('🤓');
   const [emojiField, setEmojiField] = useState('');
-  const [nameField, setNameField] = useState('');
-  const [isLoadingScore, setIsLoadingScore] = useState(false);
-
-  const handleScoreSubmit = async () => {
-    setIsLoadingScore(true);
-
-    // API Call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setIsLoadingScore(false);
-    router.push('/scores');
-  };
 
   if (gameState === 'countdown') return <Countdown count={preCountdown} />;
 
@@ -47,26 +36,7 @@ const IndexPage = () => {
     );
 
   if (gameState === 'result')
-    return (
-      <>
-        <div>Time's up!</div>
-        <div>Your score: {gameScore}</div>
-        <div>
-          <label>Your Name</label>
-          <input
-            type="text"
-            value={nameField}
-            onChange={(e) => setNameField(e.currentTarget.value)}
-          />
-        </div>
-        {isLoadingScore ? (
-          'Loading...'
-        ) : (
-          <button onClick={handleScoreSubmit}>Add to scoreboard</button>
-        )}
-        <button onClick={() => setGameState('countdown')}>Try again</button>
-      </>
-    );
+    return <Result score={gameScore} setGameState={setGameState} />;
 
   return (
     <>
