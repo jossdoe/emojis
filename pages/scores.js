@@ -1,14 +1,22 @@
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import dbConnect from '../utils/dbConnect';
 import Score from '../models/Score';
 
-const ScoresPage = ({ scores }) => (
-  <ul>
-    {scores.map((score) => (
-      <li key={score._id}>{`${score.name}: ${score.points}`}</li>
-    ))}
-  </ul>
-);
+const ScoresPage = ({ scores }) => {
+  const router = useRouter();
+
+  return (
+    <>
+      <ul>
+        {scores.map((score) => (
+          <li key={score._id}>{`${score.name}: ${score.points}`}</li>
+        ))}
+      </ul>
+      <button onClick={() => router.push('/')}>Go Home</button>
+    </>
+  );
+};
 
 export async function getServerSideProps() {
   await dbConnect();
