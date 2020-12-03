@@ -1,32 +1,20 @@
 import { useState, useEffect } from 'react';
+
+import useCountdown from 'hooks/useCountdown';
 import { Instructions, PlayButton, ScoreButton } from 'styles/index.styles';
 
 const IndexPage = () => {
   const [gameState, setGameState] = useState('index');
-  const [preCountdown, setPreCountdown] = useState(5);
-  const [gameCountdown, setGameCountdown] = useState(10);
+  const preCountdown = useCountdown(5, gameState === 'countdown', () => {
+    setGameState('gameloop');
+  });
+  const gameCountdown = useCountdown(10, gameState === 'gameloop', () => {
+    setGameState('result');
+  });
   const [gameScore, setGameScore] = useState(0);
   const [currentEmoji, setCurrentEmoji] = useState('🤓');
   const [emojiField, setEmojiField] = useState('');
   const [nameField, setNameField] = useState('');
-
-  useEffect(() => {
-    if (gameState === 'countdown' && preCountdown > 0) {
-      setTimeout(() => setPreCountdown(preCountdown - 1), 1000);
-    } else if (preCountdown === 0) {
-      setGameState('gameloop');
-      setPreCountdown(5);
-    }
-  }, [gameState, preCountdown]);
-
-  useEffect(() => {
-    if (gameState === 'gameloop' && gameCountdown > 0) {
-      setTimeout(() => setGameCountdown(gameCountdown - 1), 1000);
-    } else if (gameCountdown === 0) {
-      setGameState('result');
-      setGameCountdown(10);
-    }
-  }, [gameState, gameCountdown]);
 
   if (gameState === 'countdown')
     return (
@@ -63,6 +51,7 @@ const IndexPage = () => {
           />
         </div>
         <button>Add to scoreboard</button>
+        <button onClick={() => setGameState('countdown')}>Try again</button>
       </>
     );
 
