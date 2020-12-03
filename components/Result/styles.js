@@ -13,6 +13,7 @@ const rotate = keyframes`
 export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: 2rem;
+    margin-top: 0;
     margin-bottom: 30px;
     position: relative;
 
@@ -61,6 +62,15 @@ export const Input = styled.input`
 `;
 
 export const Spinner = styled.div`
+  display: block;
+  margin: 0 auto 40px;
+  background: transparent;
+  border: none;
+  padding: 18px;
+  width: 200px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.4rem;
   animation: ${rotate} 2s linear infinite;
 `;
 

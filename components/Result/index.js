@@ -61,9 +61,7 @@ const Result = ({ score, setGameState }) => {
       ) : (
         <SubmitButton onClick={handleScoreSubmit}>Add Score</SubmitButton>
       )}
-      <ReplayButton onClick={() => setGameState('countdown')}>
-        Try Again
-      </ReplayButton>
+      <ReplayButton onClick={() => setGameState('index')}>Go Home</ReplayButton>
     </>
   );
 };
