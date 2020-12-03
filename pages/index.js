@@ -20,7 +20,7 @@ const IndexPage = () => {
   const preCountdown = useCountdown(5, gameState === 'countdown', () => {
     setGameState('gameloop');
   });
-  const gameCountdown = useCountdown(20, gameState === 'gameloop', () => {
+  const gameCountdown = useCountdown(120, gameState === 'gameloop', () => {
     setGameState('result');
   });
 

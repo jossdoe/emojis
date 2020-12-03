@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Timer } from './styles';
+import { Timer, Emoji, Input, Score } from './styles';
 
 const Gameloop = ({
   countdown,
@@ -10,10 +10,12 @@ const Gameloop = ({
   setEmojiField,
 }) => (
   <>
-    <Timer>Time left: {countdown}</Timer>
-    <div>Score: {score}</div>
-    <div>{currentEmoji}</div>
-    <input
+    <Timer>{countdown}</Timer>
+    <Emoji>{currentEmoji}</Emoji>
+    <Score>
+      <strong>{score}</strong> Points
+    </Score>
+    <Input
       type="text"
       value={emojiField}
       onChange={(e) => setEmojiField(e.currentTarget.value)}
