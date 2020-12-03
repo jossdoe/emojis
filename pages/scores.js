@@ -20,13 +20,16 @@ const ScoresPage = ({ scores }) => {
     <>
       <Title>Highscores</Title>
       <ScoreList>
-        {scores.slice(0, 10).map((score, idx) => (
-          <ScoreItem key={score._id}>
-            <Place>{idx + 1}</Place>
-            <Name>{score.name}</Name>
-            <Points>{score.points} Points</Points>
-          </ScoreItem>
-        ))}
+        {scores
+          .sort((a, b) => (b.points > a.points ? 1 : -1))
+          .slice(0, 10)
+          .map((score, idx) => (
+            <ScoreItem key={score._id}>
+              <Place>{idx + 1}</Place>
+              <Name>{score.name}</Name>
+              <Points>{score.points} Points</Points>
+            </ScoreItem>
+          ))}
       </ScoreList>
       <HomeButton onClick={() => router.push('/')}>Go Home</HomeButton>
     </>
