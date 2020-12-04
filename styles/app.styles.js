@@ -5,7 +5,8 @@ export const Header = styled.header`
     font-size: 2rem;
     color: ${theme.color};
     text-align: center;
-    margin: 40px auto;
+    margin: 0 auto;
+    padding: 40px;
     font-weight: bold;
 
     &::before {

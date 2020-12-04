@@ -25,7 +25,7 @@ ${({ theme }) => css`
   body {
     margin: 0;
     padding: 0 20px;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     background: ${theme.backgroundDark};
     background: linear-gradient(
