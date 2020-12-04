@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider, css } from 'styled-components';
 
+import Footer from 'components/Footer';
 import { Header, Container } from 'styles/app.styles';
 
 const theme = {
@@ -58,6 +59,8 @@ function MyApp({ Component, pageProps }) {
         <Container>
           <Component {...pageProps} />
         </Container>
+
+        <Footer />
       </ThemeProvider>
     </>
   );
