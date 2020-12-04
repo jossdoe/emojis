@@ -19,6 +19,7 @@ export const Timer = styled.div`
 export const Emoji = styled.div`
   font-size: 4rem;
   margin-bottom: 10px;
+  user-select: none;
 `;
 
 export const Score = styled.div`
