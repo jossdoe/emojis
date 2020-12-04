@@ -62,7 +62,9 @@ const IndexPage = () => {
     <>
       <Instructions>
         Test your millenial superpowers: Type the shown emojis as quickly as
-        possible.
+        possible. <br />
+        <br />
+        <em>Hint: Play on your phone.</em>
       </Instructions>
       <PlayButton onClick={() => setGameState('countdown')}>Play</PlayButton>
       <ScoreButton onClick={() => router.push('/scores')}>
